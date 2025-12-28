@@ -1,9 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Hello World') {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'maven:3.8-eclipse-temurin-11-alpine'
+                }
+            }
             steps {
-                sh 'echo "mvn without docker"'
+                sh 'mvn --version'
+                sh 'mvn clean install'
             }
         }
     }
