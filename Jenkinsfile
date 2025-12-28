@@ -5,6 +5,7 @@ pipeline {
             agent {
                 docker {
                     image 'maven:3.8-eclipse-temurin-11-alpine'
+                    reuseNode true
                 }
             }
             steps {
